@@ -1,0 +1,65 @@
+.automizy-chart-box{
+    width:100%;
+    border-radius: 3px;
+    position: relative;
+    min-height: 1px;
+    margin:0 10px 20px 0;
+    border:1px solid rgba(158,173,195,0.16);
+    color: #555a60;
+    background-color: #fefefe;
+    font-family:Arial;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.automizy-chart-box .automizy-chart-box-title{
+    text-align:center;
+    padding: 10px;
+    font-size: 12px;
+    color: #3e4855;
+    display:none;
+}
+.automizy-chart-box.automizy-has-title .automizy-chart-box-title{
+    display:block;
+}
+.automizy-chart-box .automizy-chart-box-content{
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    color: #3e4855;
+}
+.automizy-chart-box .automizy-chart-box-content-icon{
+    opacity: 0.3;
+    font-size: 65px;
+    float:left;
+    position:absolute;
+    top:0;
+    left: 12px;
+    display:none !important;
+}
+.automizy-chart-box.automizy-has-icon .automizy-chart-box-content-icon{
+    display:inline-block !important;
+}
+.automizy-chart-box .automizy-chart-box-content-chart{
+    font-size: 35px;
+    text-align: right;
+}
+.automizy-chart-box .automizy-chart-box-content-description{
+    font-size: 14px;
+    text-align: right;
+    opacity: 0.7;
+    display:none;
+}
+.automizy-chart-box.automizy-has-description .automizy-chart-box-content-description{
+    display:block;
+}
+.automizy-chart-box .automizy-chart-box-more{
+    border-top:1px solid rgba(158,173,195,0.16);
+    padding: 5px 10px;
+    text-align: left;
+    cursor:pointer;
+    display:none;
+}
+.automizy-chart-box.automizy-has-more .automizy-chart-box-more{
+    display:block;
+}

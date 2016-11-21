@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="asb.css">
+    <script src="vendor/requirejs/require.js"></script>
+    <script src="asb.js"></script>
+    <script>
+        require([
+            "js/core/init",
+            "js/events/ready"
+        ], function () {
+            $ASB.init().ready(function () {
+                alert('All Done');
+            })
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

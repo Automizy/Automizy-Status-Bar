@@ -1,0 +1,30 @@
+{
+    "name": "automizy/automizy-status-bar",
+    "description": "AutomizyStatusBarDescription",
+    "type": "library",
+    "keywords": [
+        "automizy-status-bar",
+        "automizy"
+    ],
+    "homepage": "http://developers.automizy.com",
+    "authors":[
+        { "name": "Gyorgy Reti", "email": "gyorgy.reti@automizy.com" },
+        { "name": "Dominik Sagi", "email": "dominik.sagi@automizy.com" },
+        { "name": "Abel Enekes", "email": "abel.enekes@automizy.com" },
+        { "name": "Gabor Koncz", "email": "gabor.koncz@automizy.com" }
+    ],
+    "support": {
+        "email": "gyorgy.reti@automizy.com",
+        "issues": "https://github.com/Automizy/Automizy-Status-Bar/issues",
+        "wiki": "https://github.com/Automizy/Automizy-Status-Bar/wiki",
+        "source": "https://github.com/Automizy/Automizy-Status-Bar",
+        "docs": "http://developers.automizy.com"
+    },
+    "prefer-stable": true,
+    "config": {
+        "vendor-dir":".composer"
+    },
+    "require-dev":{
+        "zendframework/zend-i18n":"2.*"
+    }
+}

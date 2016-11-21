@@ -1,0 +1,41 @@
+{
+  "name": "automizy-status-bar",
+  "description": "AutomizyStatusBarDescription",
+  "keywords":[
+    "automizy-status-bar",
+    "automizy"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "build",
+    "AUTHORS.txt",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "moduleType":[
+    "globals",
+    "amd"
+  ],
+  "main":[
+    "src/asb.js",
+    "src/asb.css"
+  ],
+  "authors":[
+    { "name": "Gyorgy Reti", "email": "gyorgy.reti@automizy.com" },
+    { "name": "Dominik Sagi", "email": "dominik.sagi@automizy.com" },
+    { "name": "Abel Enekes", "email": "abel.enekes@automizy.com" },
+    { "name": "Gabor Koncz", "email": "gabor.koncz@automizy.com" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/automizy/automizy-status-bar.git"
+  },
+  "dependencies": {
+    "jquery": "2.*",
+	"requirejs": "https://github.com/jrburke/requirejs.git#master",
+	"fontawesome": "*",
+    "automizy-icon-set": "*",
+    "automizy-js": "*"
+  }
+}
