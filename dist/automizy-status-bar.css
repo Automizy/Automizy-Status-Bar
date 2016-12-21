@@ -169,3 +169,7 @@
     border-color: #3fa243;
     background: #4CAF50;
 }
+.automizy-status-bar-process-actions-action.fa-times:hover{
+    border-color: #a0a0a0;
+    background: #aaaaaa;
+}

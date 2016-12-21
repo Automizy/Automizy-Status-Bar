@@ -525,7 +525,9 @@
             info:false,
             infoFunction:function(){},
             download:false,
-            downloadFunction:function(){}
+            downloadFunction:function(){},
+            close:false,
+            closeFunction:function(){}
         };
 
         t.d.$widget = $('<div class="automizy-status-bar-process"></div>');
@@ -568,6 +570,9 @@
         t.d.$infoAction = $('<span class="automizy-status-bar-process-actions-action fa fa-info" title="'+$A.translate('Info')+'"></span>').appendTo(t.d.$actions).click(function(){
             t.info();
         }).hide();
+        t.d.$closeAction = $('<span class="automizy-status-bar-process-actions-action fa fa-times" title="'+$A.translate('Close')+'"></span>').appendTo(t.d.$actions).click(function(){
+            t.close();
+        }).hide();
 
         t.name($A.getUniqueString());
 
@@ -579,6 +584,7 @@
             t.d.$editAction.tooltipster({delay:1});
             t.d.$stopAction.tooltipster({delay:1});
             t.d.$infoAction.tooltipster({delay:1});
+            t.d.$closeAction.tooltipster({delay:1});
         }
 
     };
@@ -864,6 +870,28 @@
         }
         if(t.d.download) {
             t.d.downloadFunction.apply(t, [t]);
+        }
+        return t;
+    };
+
+    p.close = function(close){
+        var t = this;
+        if(typeof close !== 'undefined') {
+            if (typeof close === 'function') {
+                t.d.close = true;
+                t.d.closeFunction = close;
+            }else{
+                t.d.close = $A.parseBoolean(close);
+            }
+            if(t.d.close) {
+                t.d.$closeAction.show();
+            }else{
+                t.d.$closeAction.hide();
+            }
+            return t;
+        }
+        if(t.d.close) {
+            t.d.closeFunction.apply(t, [t]);
         }
         return t;
     };
