@@ -17,6 +17,10 @@ define([], function () {
         };
         t.m = {};
         t.d = {};
+
+        t.groups = {};
+        t.processes = {};
+
     }();
     return $ASB;
 });

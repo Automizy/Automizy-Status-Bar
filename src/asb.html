@@ -10,7 +10,117 @@
             "js/events/ready"
         ], function () {
             $ASB.init().ready(function () {
-                alert('All Done');
+                $ASB.$widget.appendTo('body');
+                window.group1 = $ASB.newGroup().title('Finished jobs').name('finishedJobs').draw();
+                window.group2 = $ASB.newGroup().title('Running jobs').name('runningJobs').emptyText('pina').draw();
+                window.group3 = $ASB.newGroup().title('Future jobs').name('futureJobs').draw();
+
+                window.process1 = $ASB.newProcess()
+                        .name(123)
+                        .group('futureJobs')
+                        .icon('fa-envelope-o')
+                        .title('Beautiful email')
+                        .percent(75)
+                        .showStatusBox()
+                        .hideTimeBox()
+                        .stop(function(){
+                            alert('stop');
+                        })
+                        .pause(false)
+                        .start(function(){
+                            alert('start');
+                        })
+                        .edit(function(){
+                            alert('edit');
+                        })
+                        .info(function(){
+                            alert('info');
+                        })
+                        .download(false);
+
+                window.process2 = $ASB.newProcess()
+                        .name(124)
+                        .group('futureJobs')
+                        .icon('fa-envelope-o')
+                        .title('The most long title email name in the world and the universe and everything')
+                        .timeLabel('would start at')
+                        .time('2017-11-22 15:27:00')
+                        .hideStatusBox()
+                        .showTimeBox()
+                        .stop(function(){
+                            alert('stop');
+                        })
+                        .pause(function(){
+                            alert('pause');
+                        })
+                        .start(false)
+                        .edit(function(){
+                            alert('pause');
+                        })
+                        .info(function(){
+                            alert('info');
+                        })
+                        .download(false);
+
+                window.process3 = $ASB.newProcess()
+                        .name(125)
+                        .group('finishedJobs')
+                        .icon('fa-envelope-o')
+                        .title('Just an email')
+                        .timeLabel('finished on')
+                        .time('-')
+                        .hideStatusBox()
+                        .showTimeBox()
+                        .stop(false)
+                        .pause(false)
+                        .start(false)
+                        .edit(false)
+                        .info(function(){
+                            alert('info');
+                        })
+                        .download(false);
+
+                window.process4 = $ASB.newProcess()
+                        .name(126)
+                        .group('futureJobs')
+                        .icon('fa-envelope-o')
+                        .title('Beautiful email')
+                        .percent(0)
+                        .showStatusBox()
+                        .hideTimeBox()
+                        .stop(function(){
+                            alert('stop');
+                        })
+                        .pause(function(){
+                            alert('pause');
+                        })
+                        .start(false)
+                        .edit(function(){
+                            alert('edit');
+                        })
+                        .info(function(){
+                            alert('info');
+                        })
+                        .download(false);
+
+                window.process5 = $ASB.newProcess()
+                        .name(127)
+                        .group('finishedJobs')
+                        .icon('fa-download')
+                        .title('File exported')
+                        .timeLabel('finished on')
+                        .time('-')
+                        .percent(0)
+                        .hideStatusBox()
+                        .showTimeBox()
+                        .stop(false)
+                        .pause(false)
+                        .start(false)
+                        .edit(false)
+                        .info(false)
+                        .download(function(){
+                            alert('download');
+                        });
             })
         });
     </script>
