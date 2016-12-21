@@ -12,6 +12,11 @@ require([
     "js/events/layoutReady",
     "js/events/ready",
 
+    "js/functions/scanGroups",
+
+    "js/modules/group",
+    "js/modules/process",
+
     "js/elements/layout"
 
 ], function () {
