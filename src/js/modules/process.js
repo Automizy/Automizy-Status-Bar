@@ -4,26 +4,37 @@ define([
     var Process = function () {
         var t = this;
         t.d = {
-            group:false,
-            hoverTitle:false,
-            icon:false,
-            time:false,
-            percent:0,
+            group: false,
+            hoverTitle: false,
+            icon: false,
+            time: false,
+            percent: 0,
 
-            stop:false,
-            stopFunction:function(){},
-            start:false,
-            startFunction:function(){},
-            pause:false,
-            pauseFunction:function(){},
-            edit:false,
-            editFunction:function(){},
-            info:false,
-            infoFunction:function(){},
-            download:false,
-            downloadFunction:function(){},
-            close:false,
-            closeFunction:function(){}
+            status: '',
+            onStatusChangeFunction: function () {
+            },
+
+            stop: false,
+            stopFunction: function () {
+            },
+            start: false,
+            startFunction: function () {
+            },
+            pause: false,
+            pauseFunction: function () {
+            },
+            edit: false,
+            editFunction: function () {
+            },
+            info: false,
+            infoFunction: function () {
+            },
+            download: false,
+            downloadFunction: function () {
+            },
+            close: false,
+            closeFunction: function () {
+            }
         };
 
         t.d.$widget = $('<div class="automizy-status-bar-process"></div>');
@@ -48,49 +59,49 @@ define([
 
         t.d.statusBar = $A.newProgressBar().percentPosition('bottom').drawTo(t.d.$statusBox);
 
-        t.d.$downloadAction = $('<span class="automizy-status-bar-process-actions-action fa fa-download" title="'+$A.translate('Download')+'"></span>').appendTo(t.d.$actions).click(function(){
+        t.d.$downloadAction = $('<span class="automizy-status-bar-process-actions-action fa fa-download" title="' + $A.translate('Download') + '"></span>').appendTo(t.d.$actions).click(function () {
             t.download();
         }).hide();
-        t.d.$startAction = $('<span class="automizy-status-bar-process-actions-action fa fa-play" title="'+$A.translate('Start')+'"></span>').appendTo(t.d.$actions).click(function(){
+        t.d.$startAction = $('<span class="automizy-status-bar-process-actions-action fa fa-play" title="' + $A.translate('Start') + '"></span>').appendTo(t.d.$actions).click(function () {
             t.start();
         }).hide();
-        t.d.$pauseAction = $('<span class="automizy-status-bar-process-actions-action fa fa-pause" title="'+$A.translate('Pause')+'"></span>').appendTo(t.d.$actions).click(function(){
+        t.d.$pauseAction = $('<span class="automizy-status-bar-process-actions-action fa fa-pause" title="' + $A.translate('Pause') + '"></span>').appendTo(t.d.$actions).click(function () {
             t.pause();
         }).hide();
-        t.d.$editAction = $('<span class="automizy-status-bar-process-actions-action fa fa-pencil" title="'+$A.translate('Edit')+'"></span>').appendTo(t.d.$actions).click(function(){
+        t.d.$editAction = $('<span class="automizy-status-bar-process-actions-action fa fa-pencil" title="' + $A.translate('Edit') + '"></span>').appendTo(t.d.$actions).click(function () {
             t.edit();
         }).hide();
-        t.d.$stopAction = $('<span class="automizy-status-bar-process-actions-action fa fa-stop" title="'+$A.translate('Stop')+'"></span>').appendTo(t.d.$actions).click(function(){
+        t.d.$stopAction = $('<span class="automizy-status-bar-process-actions-action fa fa-stop" title="' + $A.translate('Stop') + '"></span>').appendTo(t.d.$actions).click(function () {
             t.stop();
         }).hide();
-        t.d.$infoAction = $('<span class="automizy-status-bar-process-actions-action fa fa-info" title="'+$A.translate('Info')+'"></span>').appendTo(t.d.$actions).click(function(){
+        t.d.$infoAction = $('<span class="automizy-status-bar-process-actions-action fa fa-info" title="' + $A.translate('Info') + '"></span>').appendTo(t.d.$actions).click(function () {
             t.info();
         }).hide();
-        t.d.$closeAction = $('<span class="automizy-status-bar-process-actions-action fa fa-times" title="'+$A.translate('Close')+'"></span>').appendTo(t.d.$actions).click(function(){
+        t.d.$closeAction = $('<span class="automizy-status-bar-process-actions-action fa fa-times" title="' + $A.translate('Close') + '"></span>').appendTo(t.d.$actions).click(function () {
             t.close();
         }).hide();
 
         t.name($A.getUniqueString());
 
         if (typeof $().tooltipster === 'function') {
-            t.d.$iconCell.tooltipster({delay:1});
-            t.d.$downloadAction.tooltipster({delay:1});
-            t.d.$startAction.tooltipster({delay:1});
-            t.d.$pauseAction.tooltipster({delay:1});
-            t.d.$editAction.tooltipster({delay:1});
-            t.d.$stopAction.tooltipster({delay:1});
-            t.d.$infoAction.tooltipster({delay:1});
-            t.d.$closeAction.tooltipster({delay:1});
+            t.d.$iconCell.tooltipster({delay: 1});
+            t.d.$downloadAction.tooltipster({delay: 1});
+            t.d.$startAction.tooltipster({delay: 1});
+            t.d.$pauseAction.tooltipster({delay: 1});
+            t.d.$editAction.tooltipster({delay: 1});
+            t.d.$stopAction.tooltipster({delay: 1});
+            t.d.$infoAction.tooltipster({delay: 1});
+            t.d.$closeAction.tooltipster({delay: 1});
         }
 
     };
 
     var p = Process.prototype;
 
-    p.name = function(name){
+    p.name = function (name) {
         var t = this;
-        if(typeof name !== 'undefined'){
-            if(typeof $ASB.processes[t.d.name] !== 'undefined'){
+        if (typeof name !== 'undefined') {
+            if (typeof $ASB.processes[t.d.name] !== 'undefined') {
                 delete $ASB.processes[t.d.name];
             }
             t.d.name = name;
@@ -99,19 +110,19 @@ define([
         }
         return t.d.name;
     };
-    p.title = function(title){
+    p.title = function (title) {
         var t = this;
-        if(typeof title !== 'undefined'){
+        if (typeof title !== 'undefined') {
             t.d.title = title;
             t.d.$title.html(t.d.title);
             return t;
         }
         return t.d.title;
     };
-    p.hoverTitle = function(hoverTitle){
+    p.hoverTitle = function (hoverTitle) {
         var t = this;
-        if(typeof hoverTitle !== 'undefined'){
-            if(t.d.hoverTitle !== false && t.hoverTitle() == hoverTitle) {
+        if (typeof hoverTitle !== 'undefined') {
+            if (t.d.hoverTitle !== false && t.hoverTitle() == hoverTitle) {
                 return t;
             }
             t.d.hoverTitle = hoverTitle;
@@ -120,7 +131,7 @@ define([
             }
             t.d.$iconCell.attr('title', t.d.hoverTitle);
             if (typeof $().tooltipster === 'function') {
-                t.d.$iconCell.tooltipster({delay:1});
+                t.d.$iconCell.tooltipster({delay: 1});
             }
             return t;
         }
@@ -129,7 +140,7 @@ define([
     p.icon = function (icon, iconType) {
         var t = this;
         if (typeof icon !== 'undefined') {
-            if(t.d.icon !== false && t.icon() == icon) {
+            if (t.d.icon !== false && t.icon() == icon) {
                 return t;
             }
             t.d.icon = icon;
@@ -150,33 +161,33 @@ define([
         }
         return t.d.icon || false;
     };
-    p.group = function(group){
+    p.group = function (group) {
         var t = this;
-        if(typeof group !== 'undefined'){
-            if(t.d.group !== false && t.d.group.name() == group) {
+        if (typeof group !== 'undefined') {
+            if (t.d.group !== false && t.d.group.name() == group) {
                 return t;
             }
             t.d.group = $ASB.groups[group] || false;
-            if(t.d.group !== false){
+            if (t.d.group !== false) {
                 t.d.group.addProcess(t);
             }
             return t;
         }
         return t.d.group;
     };
-    p.timeLabel = function(timeLabel){
+    p.timeLabel = function (timeLabel) {
         var t = this;
-        if(typeof timeLabel !== 'undefined'){
+        if (typeof timeLabel !== 'undefined') {
             t.d.timeLabel = timeLabel;
             t.d.$timeText.html(t.d.timeLabel);
             return t;
         }
         return t.d.timeLabel;
     };
-    p.time = function(time){
+    p.time = function (time) {
         var t = this;
-        if(typeof time !== 'undefined'){
-            if(t.d.time !== false && t.time() == time) {
+        if (typeof time !== 'undefined') {
+            if (t.d.time !== false && t.time() == time) {
                 return t;
             }
             t.d.time = time;
@@ -185,10 +196,10 @@ define([
         }
         return t.d.time;
     };
-    p.percent = function(percent){
+    p.percent = function (percent) {
         var t = this;
-        if(typeof percent !== 'undefined'){
-            if(t.d.percent !== false && t.percent() == percent) {
+        if (typeof percent !== 'undefined') {
+            if (t.d.percent !== false && t.percent() == percent) {
                 return t;
             }
             t.d.percent = percent;
@@ -197,12 +208,12 @@ define([
         }
         return t.d.percent;
     };
-    p.fadeTo = function(opacity, millisec){
+    p.fadeTo = function (opacity, millisec) {
         var t = this;
-        if(typeof opacity !== 'undefined'){
-            if(typeof millisec !== 'undefined'){
+        if (typeof opacity !== 'undefined') {
+            if (typeof millisec !== 'undefined') {
                 var millisec = millisec;
-            }else{
+            } else {
                 millisec = 500;
             }
             t.widget().stop().fadeTo(millisec, opacity);
@@ -210,27 +221,27 @@ define([
         return t;
     };
 
-    p.showStatusBox = function(percent){
+    p.showStatusBox = function (percent) {
         var t = this;
         t.d.$statusBox.show();
         return t;
     };
-    p.hideStatusBox = function(percent){
+    p.hideStatusBox = function (percent) {
         var t = this;
         t.d.$statusBox.hide();
         return t;
     };
-    p.showTimeBox = function(percent){
+    p.showTimeBox = function (percent) {
         var t = this;
         t.d.$timeBox.show();
         return t;
     };
-    p.hideTimeBox = function(percent){
+    p.hideTimeBox = function (percent) {
         var t = this;
         t.d.$timeBox.hide();
         return t;
     };
-    p.remove = function(){
+    p.remove = function () {
         var t = this;
         delete $ASB.processes[t.name()];
         t.d.$widget.remove();
@@ -238,155 +249,182 @@ define([
         return t;
     };
 
-    p.stop = function(stop){
+    p.status = function (status) {
         var t = this;
-        if(typeof stop !== 'undefined') {
+        if (typeof status !== 'undefined') {
+            status = status.trim();
+            if (t.d.status != status) {
+                t.d.status = status;
+                t.onStatusChange();
+            }
+            return t;
+        }
+        else {
+            return t.d.status;
+        }
+    };
+
+    p.onStatusChange = function (onStatusChangeFunction) {
+        var t = this;
+        if (typeof onStatusChangeFunction === 'function') {
+            t.d.onStatusChangeFunction = onStatusChangeFunction;
+            return t;
+        }
+        else {
+            t.d.onStatusChangeFunction.apply(t, [t]);
+        }
+        return t;
+    };
+
+    p.stop = function (stop) {
+        var t = this;
+        if (typeof stop !== 'undefined') {
             if (typeof stop === 'function') {
                 t.d.stop = true;
                 t.d.stopFunction = stop;
-            }else{
+            } else {
                 t.d.stop = $A.parseBoolean(stop);
             }
-            if(t.d.stop) {
+            if (t.d.stop) {
                 t.d.$stopAction.show();
-            }else{
+            } else {
                 t.d.$stopAction.hide();
             }
             return t;
         }
-        if(t.d.stop) {
+        if (t.d.stop) {
             t.d.stopFunction.apply(t, [t]);
         }
         return t;
     };
 
-    p.start = function(start){
+    p.start = function (start) {
         var t = this;
-        if(typeof start !== 'undefined') {
+        if (typeof start !== 'undefined') {
             if (typeof start === 'function') {
                 t.d.start = true;
                 t.d.startFunction = start;
-            }else{
+            } else {
                 t.d.start = $A.parseBoolean(start);
             }
-            if(t.d.start) {
+            if (t.d.start) {
                 t.d.$startAction.show();
-            }else{
+            } else {
                 t.d.$startAction.hide();
             }
             return t;
         }
-        if(t.d.start) {
+        if (t.d.start) {
             t.d.startFunction.apply(t, [t]);
         }
         return t;
     };
 
-    p.pause = function(pause){
+    p.pause = function (pause) {
         var t = this;
-        if(typeof pause !== 'undefined') {
+        if (typeof pause !== 'undefined') {
             if (typeof pause === 'function') {
                 t.d.pause = true;
                 t.d.pauseFunction = pause;
-            }else{
+            } else {
                 t.d.pause = $A.parseBoolean(pause);
             }
-            if(t.d.pause) {
+            if (t.d.pause) {
                 t.d.$pauseAction.show();
-            }else{
+            } else {
                 t.d.$pauseAction.hide();
             }
             return t;
         }
-        if(t.d.pause) {
+        if (t.d.pause) {
             t.d.pauseFunction.apply(t, [t]);
         }
         return t;
     };
 
-    p.edit = function(edit){
+    p.edit = function (edit) {
         var t = this;
-        if(typeof edit !== 'undefined') {
+        if (typeof edit !== 'undefined') {
             if (typeof edit === 'function') {
                 t.d.edit = true;
                 t.d.editFunction = edit;
-            }else{
+            } else {
                 t.d.edit = $A.parseBoolean(edit);
             }
-            if(t.d.edit) {
+            if (t.d.edit) {
                 t.d.$editAction.show();
-            }else{
+            } else {
                 t.d.$editAction.hide();
             }
             return t;
         }
-        if(t.d.edit) {
+        if (t.d.edit) {
             t.d.editFunction.apply(t, [t]);
         }
         return t;
     };
 
-    p.info = function(info){
+    p.info = function (info) {
         var t = this;
-        if(typeof info !== 'undefined') {
+        if (typeof info !== 'undefined') {
             if (typeof info === 'function') {
                 t.d.info = true;
                 t.d.infoFunction = info;
-            }else{
+            } else {
                 t.d.info = $A.parseBoolean(info);
             }
-            if(t.d.info) {
+            if (t.d.info) {
                 t.d.$infoAction.show();
-            }else{
+            } else {
                 t.d.$infoAction.hide();
             }
             return t;
         }
-        if(t.d.info) {
+        if (t.d.info) {
             t.d.infoFunction.apply(t, [t]);
         }
         return t;
     };
 
-    p.download = function(download){
+    p.download = function (download) {
         var t = this;
-        if(typeof download !== 'undefined') {
+        if (typeof download !== 'undefined') {
             if (typeof download === 'function') {
                 t.d.download = true;
                 t.d.downloadFunction = download;
-            }else{
+            } else {
                 t.d.download = $A.parseBoolean(download);
             }
-            if(t.d.download) {
+            if (t.d.download) {
                 t.d.$downloadAction.show();
-            }else{
+            } else {
                 t.d.$downloadAction.hide();
             }
             return t;
         }
-        if(t.d.download) {
+        if (t.d.download) {
             t.d.downloadFunction.apply(t, [t]);
         }
         return t;
     };
 
-    p.close = function(close){
+    p.close = function (close) {
         var t = this;
-        if(typeof close !== 'undefined') {
+        if (typeof close !== 'undefined') {
             if (typeof close === 'function') {
                 t.d.close = true;
                 t.d.closeFunction = close;
-            }else{
+            } else {
                 t.d.close = $A.parseBoolean(close);
             }
-            if(t.d.close) {
+            if (t.d.close) {
                 t.d.$closeAction.show();
-            }else{
+            } else {
                 t.d.$closeAction.hide();
             }
             return t;
         }
-        if(t.d.close) {
+        if (t.d.close) {
             t.d.closeFunction.apply(t, [t]);
         }
         return t;
@@ -398,9 +436,9 @@ define([
     p.draw = p.drawTo = function (target) {
         var t = this;
         var target = target || $('body').eq(0);
-        if(typeof target.widget === 'function') {
+        if (typeof target.widget === 'function') {
             t.d.$widget.appendTo(target.widget());
-        } else{
+        } else {
             t.d.$widget.appendTo(target);
         }
         return t;
