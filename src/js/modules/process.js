@@ -1,5 +1,5 @@
 define([
-    "js/core/core"
+    "js/init/init"
 ], function () {
     var Process = function () {
         var t = this;

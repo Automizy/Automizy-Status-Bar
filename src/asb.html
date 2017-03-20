@@ -3,16 +3,16 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="asb.css">
     <script src="vendor/requirejs/require.js"></script>
+    <script src="vendor/automizy-project-initializer/automizy-project-initializer.js"></script>
     <script src="asb.js"></script>
     <script>
         require([
-            "js/core/init",
-            "js/events/ready"
+            "js/init/init"
         ], function () {
             $ASB.init().ready(function () {
                 $ASB.$widget.appendTo('body');
                 window.group1 = $ASB.newGroup().title('Finished jobs').name('finishedJobs').draw();
-                window.group2 = $ASB.newGroup().title('Running jobs').name('runningJobs').emptyText('pina').draw();
+                window.group2 = $ASB.newGroup().title('Running jobs').name('runningJobs').emptyText('-- no jobs here --').draw();
                 window.group3 = $ASB.newGroup().title('Future jobs').name('futureJobs').draw();
 
                 window.process1 = $ASB.newProcess()

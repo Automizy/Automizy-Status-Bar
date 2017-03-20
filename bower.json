@@ -1,11 +1,11 @@
 {
   "name": "automizy-status-bar",
-  "description": "AutomizyStatusBarDescription",
+  "description": "Automizy Status Bar",
   "keywords":[
     "automizy-status-bar",
     "automizy"
   ],
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "build",
@@ -24,8 +24,7 @@
   "authors":[
     { "name": "Gyorgy Reti", "email": "gyorgy.reti@automizy.com" },
     { "name": "Dominik Sagi", "email": "dominik.sagi@automizy.com" },
-    { "name": "Abel Enekes", "email": "abel.enekes@automizy.com" },
-    { "name": "Gabor Koncz", "email": "gabor.koncz@automizy.com" }
+    { "name": "Abel Enekes", "email": "abel.enekes@automizy.com" }
   ],
   "repository": {
     "type": "git",
@@ -34,6 +33,7 @@
   "dependencies": {
     "jquery": "2.*",
 	"requirejs": "https://github.com/jrburke/requirejs.git#master",
+    "automizy-project-initializer": "*",
 	"fontawesome": "*",
     "automizy-icon-set": "*",
     "automizy-js": "*"

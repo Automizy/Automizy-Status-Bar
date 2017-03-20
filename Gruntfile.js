@@ -67,7 +67,8 @@ module.exports = function (grunt) {
 					{expand: true, cwd: '.bower/requirejs/', src: 'require.js', dest: 'src/vendor/requirejs'},
 					{expand: true, cwd: '.bower/fontawesome/css', src: '**/*', dest: 'src/vendor/fontawesome/css'},
 					{expand: true, cwd: '.bower/fontawesome/fonts', src: '**/*', dest: 'src/vendor/fontawesome/fonts'},
-					{expand: true, cwd: '.bower/automizy-icon-set/dist/', src: '**/*', dest: 'src/vendor/automizy-icon-set'}
+					{expand: true, cwd: '.bower/automizy-icon-set/dist/', src: '**/*', dest: 'src/vendor/automizy-icon-set'},
+                    {expand: true, cwd: '.bower/automizy-project-initializer/dist/', src: '**/*', dest: 'src/vendor/automizy-project-initializer'}
 				]
 			},
 			copytodist: {

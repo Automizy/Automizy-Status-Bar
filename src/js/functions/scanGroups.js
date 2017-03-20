@@ -1,5 +1,5 @@
 define([
-    "js/core/core"
+    "js/init/init"
 ], function () {
 
     $ASB.scanGroups = function(){

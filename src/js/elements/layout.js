@@ -1,7 +1,5 @@
 define([
-    "js/core/core",
-    "js/events/pluginsLoaded",
-    "js/events/layoutReady"
+    "js/init/init"
 ], function () {
     $ASB.pluginsLoaded(function () {
 
